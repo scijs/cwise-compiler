@@ -9,7 +9,13 @@ Just the compiler from cwise.  You can call this directly if you know what you a
 ## `require("cwise-compiler")(procedure)`
 Compiles a cwise procedure for the given procedure.  The object procedure must have the following fields:
 
-* `argTypes` An array of argument types (as in cwise)
-* `shimArgs` An array of arguments passed into the compiled procedures
-* `arrayArgs` A list of indices
+* `args` An array of argument types (as in cwise)
+* `pre` A parsed pre function
+* `body` A parsed body function
+* `post` A parsed post function
+* `funcName`
+* `blockSize`
+* `debug`
 
+## Credits
+(c) 2013 Mikola Lysenko. MIT License
