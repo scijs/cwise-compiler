@@ -100,3 +100,5 @@ function compileCwise(user_args) {
 
   return createThunk(proc)
 }
+
+module.exports = compileCwise
