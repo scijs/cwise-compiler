@@ -7,6 +7,8 @@ function Procedure() {
   this.shimArgs = []
   this.arrayArgs = []
   this.scalarArgs = []
+  this.offsetArgs = []
+  this.offsetArgIndex = []
   this.indexArgs = []
   this.shapeArgs = []
   this.funcName = ""
@@ -27,49 +29,49 @@ function compileCwise(user_args) {
 
   //Parse arguments
   var proc_args = user_args.args.slice(0)
-  proc.argTypes = proc_args
+  proc.argTypes = proc_args.slice(0)
   for(var i=0; i<proc_args.length; ++i) {
-    switch(proc_args[i]) {
-      case "array":
-        proc.arrayArgs.push(i)
-        proc.shimArgs.push("array" + i)
-        if(i < proc.pre.args.length && proc.pre.args[i].count>0) {
-          throw new Error("cwise: pre() block may not reference array args")
-        }
-        if(i < proc.post.args.length && proc.post.args[i].count>0) {
-          throw new Error("cwise: post() block may not reference array args")
-        }
-      break
-      case "scalar":
-        proc.scalarArgs.push(i)
-        proc.shimArgs.push("scalar" + i)
-      break
-      case "index":
-        proc.indexArgs.push(i)
-        if(i < proc.pre.args.length && proc.pre.args[i].count > 0) {
-          throw new Error("cwise: pre() block may not reference array index")
-        }
-        if(i < proc.body.args.length && proc.body.args[i].lvalue) {
-          throw new Error("cwise: body() block may not write to array index")
-        }
-        if(i < proc.post.args.length && proc.post.args[i].count > 0) {
-          throw new Error("cwise: post() block may not reference array index")
-        }
-      break
-      case "shape":
-        proc.shapeArgs.push(i)
-        if(i < proc.pre.args.length && proc.pre.args[i].lvalue) {
-          throw new Error("cwise: pre() block may not write to array shape")
-        }
-        if(i < proc.body.args.length && proc.body.args[i].lvalue) {
-          throw new Error("cwise: body() block may not write to array shape")
-        }
-        if(i < proc.post.args.length && proc.post.args[i].lvalue) {
-          throw new Error("cwise: post() block may not write to array shape")
-        }
-      break
-      default:
-        throw new Error("cwise: Unknown argument type " + proc_args[i])
+    var arg_type = proc_args[i]
+    if(arg_type === "array") {
+      proc.arrayArgs.push(i)
+      proc.shimArgs.push("array" + i)
+      if(i < proc.pre.args.length && proc.pre.args[i].count>0) {
+        throw new Error("cwise: pre() block may not reference array args")
+      }
+      if(i < proc.post.args.length && proc.post.args[i].count>0) {
+        throw new Error("cwise: post() block may not reference array args")
+      }
+    } else if(arg_type === "scalar") {
+      proc.scalarArgs.push(i)
+      proc.shimArgs.push("scalar" + i)
+    } else if(arg_type === "index") {
+      proc.indexArgs.push(i)
+      if(i < proc.pre.args.length && proc.pre.args[i].count > 0) {
+        throw new Error("cwise: pre() block may not reference array index")
+      }
+      if(i < proc.body.args.length && proc.body.args[i].lvalue) {
+        throw new Error("cwise: body() block may not write to array index")
+      }
+      if(i < proc.post.args.length && proc.post.args[i].count > 0) {
+        throw new Error("cwise: post() block may not reference array index")
+      }
+    } else if(arg_type === "shape") {
+      proc.shapeArgs.push(i)
+      if(i < proc.pre.args.length && proc.pre.args[i].lvalue) {
+        throw new Error("cwise: pre() block may not write to array shape")
+      }
+      if(i < proc.body.args.length && proc.body.args[i].lvalue) {
+        throw new Error("cwise: body() block may not write to array shape")
+      }
+      if(i < proc.post.args.length && proc.post.args[i].lvalue) {
+        throw new Error("cwise: post() block may not write to array shape")
+      }
+    } else if(typeof arg_type === "object" && arg_type.offset) {
+      proc.argTypes[i] = "offset"
+      proc.offsetArgs.push({ array: arg_type.array, offset:arg_type.offset })
+      proc.offsetArgIndex.push(i)
+    } else {
+      throw new Error("cwise: Unknown argument type " + proc_args[i])
     }
   }
   
