@@ -29,7 +29,7 @@ function compileCwise(user_args) {
 
   //Parse arguments
   var proc_args = user_args.args.slice(0)
-  proc.argTypes = proc_args.slice(0)
+  proc.argTypes = proc_args
   for(var i=0; i<proc_args.length; ++i) {
     var arg_type = proc_args[i]
     if(arg_type === "array") {
