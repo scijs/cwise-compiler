@@ -13,9 +13,9 @@ Compiles a cwise procedure for the given procedure.  The object procedure must h
 * `pre` A parsed pre function
 * `body` A parsed body function
 * `post` A parsed post function
-* `funcName`
-* `blockSize`
-* `debug`
+* `funcName` Name of the function
+* `blockSize` Block size to generate
+* `debug` Debug mode flag
 
 ## Credits
 (c) 2013 Mikola Lysenko. MIT License
