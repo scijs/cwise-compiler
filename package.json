@@ -1,6 +1,6 @@
 {
   "name": "cwise-compiler",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "cwise's internal compiler",
   "main": "compiler.js",
   "scripts": {
@@ -23,6 +23,6 @@
     "url": "https://github.com/mikolalysenko/cwise-compiler/issues"
   },
   "dependencies": {
-    "uniq": "~0.0.2"
+    "uniq": "^1.0.0"
   }
 }
