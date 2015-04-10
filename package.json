@@ -24,5 +24,11 @@
   },
   "dependencies": {
     "uniq": "^1.0.0"
+  },
+  "devDependencies": {
+    "ndarray-ops": "^1.2.2",
+    "ndarray": "^1.0.15",
+    "cwise-parser": "^1.0.0",
+    "tape": "^3.0.0"
   }
 }
