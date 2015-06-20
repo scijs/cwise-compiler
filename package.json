@@ -1,6 +1,6 @@
 {
   "name": "cwise-compiler",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "cwise's internal compiler",
   "main": "compiler.js",
   "scripts": {
