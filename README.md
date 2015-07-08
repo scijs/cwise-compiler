@@ -2,8 +2,7 @@ cwise-compiler
 ==============
 Just the compiler from cwise.  You can call this directly if you know what you are doing and want to skip calling cwise-parser and including esprima.  This is only recommended in extreme cases though.  Otherwise you should stick to the default interface in cwise and not mess around with this craziness.
 
-[![build status](https://secure.travis-ci.org/scijs/cwise-compiler.png)](http://
-travis-ci.org/scijs/cwise-compiler)
+[![build status](https://secure.travis-ci.org/scijs/cwise-compiler.png)](http://travis-ci.org/scijs/cwise-compiler)
 
 # Install
 Install using [npm](https://www.npmjs.com/):
