@@ -1,6 +1,6 @@
 "use strict"
 var parse = require("cwise-parser")
-var compile = require("../compiler.js")
+var compile = require("../dist/compiler.js")
 var ndarray = require("ndarray")
 var ops = require("ndarray-ops")
 
@@ -49,7 +49,7 @@ require("tape")("block tests", function(t) {
   c(a,b)
 
   t.ok(ops.equals(a, ref), "back block")
-  
+
   // Multiple block indices
   var c = compile({
     args: ["array", {blockIndices: -2}],
