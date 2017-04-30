@@ -42,7 +42,7 @@ export interface Procedure {
 	blockSize?: number;
 }
 
-export function compileCwise(user_args: UserArgs) {
+export default function compileCwise(user_args: UserArgs) {
 	const proc_args = user_args.args.slice(0);
 	// Create procedure and parse blocks
 	const proc = {
