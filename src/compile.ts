@@ -1,5 +1,5 @@
 import { CompiledRoutine } from 'cwise-parser';
-import { Procedure } from './compiler';
+import { Procedure } from './index';
 import * as uniq from "uniq";
 
 // This function generates very simple loops analogous to how you typically traverse arrays (the outermost loop corresponds to the slowest changing index, the innermost loop to the fastest changing index)

@@ -1,4 +1,4 @@
-import { Procedure } from './compiler';
+import { Procedure } from './index';
 import compile from './compile'
 
 // The function below is called when constructing a cwise function object, and does the following:
