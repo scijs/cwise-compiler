@@ -4,7 +4,7 @@
 	"description": "cwise's internal compiler",
 	"main": "index.js",
 	"scripts": {
-		"test": "tape test/*.js"
+		"test": "gulp && tape test/*.js"
 	},
 	"repository": {
 		"type": "git",
